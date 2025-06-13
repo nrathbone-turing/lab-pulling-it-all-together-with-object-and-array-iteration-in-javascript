@@ -1,3 +1,5 @@
+require('./helpers');
+
 describe('Basketball Stats', function () {
   
   describe('numPointsScored', function () {

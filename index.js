@@ -116,43 +116,80 @@ function gameObject() {
 }
 
 // functions to retrieve player information
-function numPointsScored(playerName) {
 
+// added a helper function to store the list of all player objects from both teams for later use
+function allPlayers() {
+    const game = gameObject();
+
+    return { ...game.home.players, ...game.away.players };
+}
+
+function numPointsScored(playerName) {
+    const players = allPlayers();
+
+    return players[playerName].points;
 }
 
 function shoeSize(playerName) {
+    const players = allPlayers();
 
-
+    return players[playerName].shoe;
 }
 
 // functions to retrieve team information
 
 function teamColors(teamName) {
+    const game = gameObject();
 
-
+    // will refactor later to use the .forEach method on the array based on module 1 feedback
+    for (let teamKey in game) {
+        if (game[teamKey].teamName === teamName) {        
+            return game[teamKey].colors;
+        }
+    }
 }
 
 function teamNames() {
-
-
+    const game = gameObject();
+    
+    return [game.home.teamName, game.away.teamName];
 }
 
 // functions to retrieve player numbers and stats
+
 function playerNumbers(teamName) {
+    const game = gameObject();
 
-
+    // will refactor later to use the .forEach method on the array based on module 1 feedback
+    for (let teamKey in game) {
+        if (game[teamKey].teamName === teamName) {
+            return Object.values(game[teamKey].players).map(player => player.number);
+        }
+    }
 }
 
 function playerStats(playerName) {
+    const players = allPlayers();
 
-
+    return players[playerName];
 }
 
 // advanced challenge 
 
 function bigShoeRebounds() {
+    let maxShoe = 0;
+    let rebounds = 0;
+    const players = allPlayers();
 
+    // will refactor later to use the .forEach method on the array based on module 1 feedback
+    for (let player in players) {
+        if (players[player].shoe > maxShoe) {
+            maxShoe = players[player].shoe;
+            rebounds = players[player].rebounds;
+        }
+    }
 
+    return rebounds;
 }
 
 // bonus question
