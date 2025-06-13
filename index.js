@@ -114,3 +114,53 @@ function gameObject() {
         },
     };
 }
+
+// functions to retrieve player information
+function numPointsScored(playerName) {
+
+}
+
+function shoeSize(playerName) {
+
+
+}
+
+// functions to retrieve team information
+
+function teamColors(teamName) {
+
+
+}
+
+function teamNames() {
+
+
+}
+
+// functions to retrieve player numbers and stats
+function playerNumbers(teamName) {
+
+
+}
+
+function playerStats(playerName) {
+
+
+}
+
+// advanced challenge 
+
+function bigShoeRebounds() {
+
+
+}
+
+// bonus question
+
+// mostPointsScored(): Determines which player scored the most points.
+// winningTeam(): Identifies which team has the most total points.
+// playerWithLongestName(): Finds the player with the longest name
+
+// super bonus question
+
+// doesLongNameStealATon(): Returns true if the player with the longest name has the most steals.
