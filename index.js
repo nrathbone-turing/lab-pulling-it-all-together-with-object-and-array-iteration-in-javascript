@@ -161,20 +161,16 @@ function teamColors(teamName) {
 function teamNames() {
     const game = gameObject();
     
-    return [game.home.teamName, game.away.teamName];
+    return Object.values(game).map(team => team.teamName);
 }
 
 // functions to retrieve player numbers and stats
 
 function playerNumbers(teamName) {
     const game = gameObject();
-
-    // will refactor later to use the .forEach method on the array based on module 1 feedback
-    for (let teamKey in game) {
-        if (game[teamKey].teamName === teamName) {
-            return Object.values(game[teamKey].players).map(player => player.number);
-        }
-    }
+    const team = Object.values(game).find(team => team.teamName === teamName);
+    
+    return Object.values(team.players).map(player => player.number);
 }
 
 function playerStats(playerName) {
@@ -190,13 +186,12 @@ function bigShoeRebounds() {
     let rebounds = 0;
     const players = allPlayers();
 
-    // will refactor later to use the .forEach method on the array based on module 1 feedback
-    for (let player in players) {
-        if (players[player].shoe > maxShoe) {
-            maxShoe = players[player].shoe;
-            rebounds = players[player].rebounds;
+    Object.values(players).forEach(player => {
+        if (player.shoe > maxShoe) {
+            maxShoe = player.shoe;
+            rebounds = player.rebounds;
         }
-    }
+    });
 
     return rebounds;
 }
