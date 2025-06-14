@@ -118,10 +118,19 @@ function gameObject() {
 // functions to retrieve player information
 
 // added a helper function to store the list of all player objects from both teams for later use
-function allPlayers() {
-    const game = gameObject();
 
-    return { ...game.home.players, ...game.away.players };
+function allPlayers() {
+    
+    // const game = gameObject();
+
+    // return { ...game.home.players, ...game.away.players };
+
+    const game = gameObject();
+    const homePlayers = game.home.players;
+    const awayPlayers = game.away.players;
+
+    // having version control issues with node or python or something, trying a manual merge of objects (internet research indicates that `Object.assign()` works on older node versions)
+    return Object.assign({}, homePlayers, awayPlayers);
 }
 
 function numPointsScored(playerName) {
@@ -201,3 +210,14 @@ function bigShoeRebounds() {
 // super bonus question
 
 // doesLongNameStealATon(): Returns true if the player with the longest name has the most steals.
+
+// exporting functions so ESLint recognizes them as being used
+module.exports = {
+  numPointsScored,
+  shoeSize,
+  teamColors,
+  teamNames,
+  playerNumbers,
+  playerStats,
+  bigShoeRebounds,
+};
